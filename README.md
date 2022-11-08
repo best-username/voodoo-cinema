@@ -11,11 +11,17 @@ cp .env.example .env
 and change credentials for MySQL
 
 DB_CONNECTION=mysql
+
 DB_HOST=db
+
 DB_PORT=3306
+
 DB_DATABASE=voodoo_db
+
 DB_USERNAME=root
+
 DB_PASSWORD=password
+
 
 2. Build app
 
