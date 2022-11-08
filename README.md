@@ -1,3 +1,16 @@
+1. Created a folder for new project and paste:
+git clone git@github.com:best-username/voodoo-cinema.git .
+2. Build app
+docker-compose build app
+3. Up containers
+docker-compose up -d
+4. Go inside the container and make some staff
+docker-compose exec app bash
+php artisan migrate --seed
+php artisan voyager:install --with-dummy
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
