@@ -1,6 +1,20 @@
+## How to Launch
+
 1. Create a folder for new project and paste:
 
 git clone git@github.com:best-username/voodoo-cinema.git .
+
+2.0 Make sure that you have proper .env file
+cp .env.example .env
+
+and change credentials for MySQL
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=voodoo_db
+DB_USERNAME=root
+DB_PASSWORD=password
 
 2. Build app
 
@@ -13,6 +27,7 @@ docker-compose up -d
 4. Go inside the container and make some staff
 
 docker-compose exec app bash
+php artisan key:generate
 php artisan migrate --seed
 php artisan voyager:install --with-dummy
 
