@@ -28,9 +28,13 @@ docker-compose up -d
 4. Go inside the container and make some staff
 
 docker-compose exec app bash
+
 php artisan key:generate
+
 php artisan migrate --seed
+
 php artisan voyager:install --with-dummy
+
 
 
 
