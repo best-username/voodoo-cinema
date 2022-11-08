@@ -5,6 +5,7 @@
 git clone git@github.com:best-username/voodoo-cinema.git .
 
 2.0 Make sure that you have proper .env file
+
 cp .env.example .env
 
 and change credentials for MySQL
