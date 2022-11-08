@@ -1,5 +1,8 @@
 version: "3.3"
+
 services:
+    
+ #Laravel app   
   app:
     build:
       args:
@@ -7,19 +10,20 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: travellist
-    container_name: travellist-app
+    image: voodoo-cinema
+    container_name: voodoo-cinema
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - travellist
-
+      - voodoo
+      
+#db service
   db:
     image: mysql:5.7
-    container_name: travellist-db
-    restart: unless-stopped
+    container_name: db
+    restart: always
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
@@ -27,14 +31,13 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
-      - travellist
+      - voodoo
 
+ #nginx service 
   nginx:
     image: nginx:alpine
-    container_name: travellist-nginx
+    container_name: voodoo-nginx
     restart: unless-stopped
     ports:
       - 8000:80
@@ -42,8 +45,8 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - travellist
+      - voodoo
 
 networks:
-  travellist:
+  voodoo:
     driver: bridge
